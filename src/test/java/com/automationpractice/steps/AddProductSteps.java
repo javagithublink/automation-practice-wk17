@@ -13,15 +13,15 @@ public class AddProductSteps {
     public void iAddBelowProductToCart(DataTable dataTable) {
         List<List<String>> products = dataTable.asLists(String.class);
 
-        for(int i=1;i<=products.size();i++) {
-            for (List<String> e : products.subList(i,products.size())) {
+
+            for (List<String> e : products.subList(1,products.size())) {
                 new ProductPage().selectProducts(e.get(0), e.get(1), e.get(2), e.get(3), e.get(4));
 
                 new ProductPage().clickOnAddToCartButton();
                 new ProductPage().clickOnProceedToCheckOutButton();
             }
 
-        }
+
 
     }
 
@@ -29,12 +29,12 @@ public class AddProductSteps {
     @Then("^I shall validate shopping cart as below$")
     public void iShallValidateShoppingCartAsBelow(DataTable dataTable) {
         List<List<String>> verifyProducts = dataTable.asLists(String.class);
-        for(int i=1;i<=verifyProducts.size();i++) {
-            for (List<String> f : verifyProducts.subList(i,verifyProducts.size())) {
+
+            for (List<String> f : verifyProducts.subList(1,verifyProducts.size())) {
 
                 new ShoppingCartSummaryPage().verifyProductDetailsInCartSummary(f.get(0), f.get(1), f.get(2));
 
-            }
+
         }
     }
 }
